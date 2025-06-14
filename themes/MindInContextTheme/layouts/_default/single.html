@@ -1,0 +1,37 @@
+{{ define "main" }}
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+    <article class="lg:col-span-2 bg-card p-8 rounded-lg shadow-md-subtle border border-color-light">
+        {{ with .Params.featured_image | default .Params.image }}
+            <img src="{{ . | relURL }}" alt="{{ $.Title }}" class="w-full h-auto max-h-[500px] object-cover rounded-lg mb-6 shadow-sm">
+        {{ end }}
+        <h1 class="text-4xl font-normal mb-4 text-text-body">{{ .Title }}</h1>
+        <p class="text-sm text-secondary-accent mb-6">
+            Published on <span class="font-medium">{{ .Date.Format "January 2, 2006" }}</span>
+            {{ with .Params.author }}by <span class="font-medium">{{ . }}</span>{{ end }}
+            <br>
+            {{ if .Params.categories }}
+                Categories:
+                {{ range .Params.categories }}
+                    <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" class="hover:underline">{{ . }}</a>
+                {{ end }}
+            {{ end }}
+        </p>
+        <div class="prose prose-lg max-w-none text-text-body font-light leading-relaxed dark:prose-invert">
+            {{ .Content }}
+        </div>
+
+        {{/* Simple "Previous/Next" post navigation */}}
+        <div class="mt-10 pt-6 border-t border-color-light flex justify-between">
+            {{ with .PrevInSection }}
+            <a href="{{ .Permalink }}" class="text-primary-accent hover:underline">&laquo; {{ .Title }}</a>
+            {{ end }}
+            {{ with .NextInSection }}
+            <a href="{{ .Permalink }}" class="text-primary-accent hover:underline">{{ .Title }} &raquo;</a>
+            {{ end }}
+        </div>
+    </article>
+
+    <!-- Sidebar Section -->
+    {{ partial "sidebar.html" . }}
+</div>
+{{ end }}

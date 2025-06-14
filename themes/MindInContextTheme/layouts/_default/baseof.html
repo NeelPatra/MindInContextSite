@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+<head>
+    {{ partial "head.html" . }}
+</head>
+<body class="{{ .Site.Params.defaultTheme | default "light" }}-theme"> {{/* Allow default theme setting */}}
+    <div class="min-h-screen flex flex-col">
+        {{ partial "header.html" . }}
+
+        <!-- Main Content Area -->
+        <main class="container mx-auto my-10 p-4 flex-grow">
+            {{ block "main" . }}
+                <!-- Content from other templates will be injected here -->
+            {{ end }}
+        </main>
+
+        {{ partial "footer.html" . }}
+    </div>
+    {{ partial "scripts.html" . }}
+</body>
+</html>

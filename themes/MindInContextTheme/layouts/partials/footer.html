@@ -1,0 +1,17 @@
+<footer id="contact" class="bg-primary-accent text-primary-accent p-6 mt-10 rounded-t-lg shadow-md-subtle">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+        <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. {{ .Site.Copyright | default "All rights reserved." }}</p>
+        <div class="flex space-x-5 mt-4 md:mt-0">
+            {{ range .Site.Menus.footer }}
+                <a href="{{ .URL | relLangURL }}" class="hover:text-link-hover transition duration-300">{{ .Name }}</a>
+            {{ end }}
+        </div>
+        <div class="flex space-x-5 mt-4 md:mt-0">
+            {{ with .Site.Params.social }}
+                {{ range . }}
+                    <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="hover:text-link-hover transition duration-300">{{ .name }}</a>
+                {{ end }}
+            {{ end }}
+        </div>
+    </div>
+</footer>

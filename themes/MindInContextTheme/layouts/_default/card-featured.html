@@ -1,0 +1,20 @@
+<article id="featured" class="bg-card p-8 rounded-lg shadow-md-subtle border border-color-light">
+    {{ with .Params.featured_image }}
+    <a href="{{ $.Permalink }}">
+        <img src="{{ . | relURL }}" alt="{{ $.Title }}" class="w-full h-72 object-cover rounded-lg mb-6 shadow-sm">
+    </a>
+    {{ else }}
+    <a href="{{ $.Permalink }}">
+       <img src="https://placehold.co/1200x400/a7c5c5/2c3e50?text={{ $.Title | urlize }}" alt="{{ $.Title }}" class="w-full h-72 object-cover rounded-lg mb-6 shadow-sm">
+    </a>
+    {{ end }}
+    <h2 class="text-4xl font-normal mb-4 text-text-body"><a href="{{ .Permalink }}" class="hover:underline">{{ .Title }}</a></h2>
+    <p class="text-sm text-secondary-accent mb-4">
+        Published on <span class="font-medium">{{ .Date.Format "January 2, 2006" }}</span>
+        {{ with .Params.author }}by <span class="font-medium">{{ . }}</span>{{ end }}
+    </p>
+    <p class="mb-5 leading-relaxed font-light text-text-body">
+        {{ .Summary }}
+    </p>
+    <a href="{{ .Permalink }}" class="inline-block bg-primary-accent text-text-primary-accent px-7 py-3 rounded-full hover:bg-hover-light transition duration-300 shadow-sm">Read More</a>
+</article>

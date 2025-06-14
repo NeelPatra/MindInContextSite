@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nature on MindInContext</title>
+    <link>http://localhost:1313/categories/nature/</link>
+    <description>Recent content in Nature on MindInContext</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 11 Jun 2025 10:00:00 -0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/nature/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Whispers of the Dawn: A Forest Awakening</title>
+      <link>http://localhost:1313/posts/my-first-post/</link>
+      <pubDate>Wed, 11 Jun 2025 10:00:00 -0700</pubDate>
+      <guid>http://localhost:1313/posts/my-first-post/</guid>
+      <description>&lt;p&gt;As the first rays of dawn pierce through the mist, the forest awakens with a quiet grandeur. Each droplet on a leaf shimmers like a tiny jewel, and the air is crisp with the scent of damp earth and new growth. This is a time of profound stillness, where the world seems to hold its breath, waiting for the day to unfurl.&lt;/p&gt;&#xA;&lt;p&gt;Today, we explore the subtle beauty of these fleeting moments, the way light dances through the canopy, and the gentle sounds that fill the silence. It&amp;rsquo;s a reminder to pause, to observe, and to find tranquility in the subtle shifts of nature.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

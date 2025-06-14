@@ -1,0 +1,18 @@
+name = "MindInContext Theme"
+license = "MIT" # Or your preferred license
+licenselink = "https://github.com/yourusername/MindInContextTheme/blob/main/LICENSE" # Example
+description = "A minimalist blog theme based on the Tranquil Echoes design for MindInContext."
+homepage = "http://example.com/" # Your site's homepage
+tags = ["blog", "minimalist", "responsive", "dark mode", "tailwind"]
+features = ["blog", "dark mode", "responsive"]
+min_version = "0.74.0" # Or your Hugo version
+
+[author]
+  name = "Your Name"
+  homepage = "Your Website"
+
+# If you have a demo site for the theme
+# [original]
+#   name = "Tranquil Echoes Static"
+#   homepage = "link_to_original_static_version_if_any"
+#   repo = "link_to_original_repo_if_any"

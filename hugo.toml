@@ -1,0 +1,91 @@
+baseURL = "https://example.org/" # Change to your actual URL
+languageCode = "en-us"
+title = "MindInContext"
+theme = "MindInContextTheme"
+pagerSize = 5 # Number of posts per page
+
+# Optional: Set a default theme (light or dark) if user has no preference
+# defaultTheme = "dark" # will add 'dark-theme' to body
+
+# Enable taxonomies
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[params]
+  description = "A quiet corner for thoughts and reflections."
+  # copyright = "Custom copyright notice if needed"
+  defaultTheme = "light" # or "dark", JS will override with localStorage
+  mainSections = ["posts", "blog"] # Sections to include in main post lists
+
+  [params.author] # Optional global author, can be overridden in front matter
+    name = "Your Name"
+    # email = "your.email@example.com"
+
+  [params.aboutWidget]
+    title = "About MindInContext"
+    imageUrl = "/images/placeholder-about.jpg" # Path relative to static, e.g. static/images/placeholder-about.jpg
+    description = """
+    Welcome to MindInContext, a quiet corner of the internet dedicated to the subtle wonders of thoughts and ideas. Here, we share stories and reflections that aim to bring a sense of calm and appreciation for the world around us.
+    """
+    [params.aboutWidget.button]
+      text = "Learn More"
+      url = "/about/" # Link to an about page
+
+  [params.newsletterWidget]
+    title = "Stay Connected"
+    description = "Subscribe for updates and moments of tranquility."
+    formActionURL = "YOUR_NEWSLETTER_FORM_ACTION_URL" # e.g., Mailchimp form URL
+    emailFieldName = "EMAIL" # if your form has a different name for the email field
+    buttonText = "Subscribe"
+
+  [[params.social]]
+    name = "Twitter"
+    url = "https://twitter.com/yourprofile"
+  [[params.social]]
+    name = "Instagram"
+    url = "https://instagram.com/yourprofile"
+  # Add more social links
+
+[menu]
+  [[menu.main]]
+    identifier = "featured" # Corresponds to #featured on your static page
+    name = "Featured"
+    url = "/#featured" # Link to section on homepage
+    weight = 10
+  [[menu.main]]
+    identifier = "latest"
+    name = "Latest Stories"
+    url = "/#latest" # Link to section on homepage
+    weight = 20
+  [[menu.main]]
+    identifier = "posts"
+    name = "All Posts" # If you want a dedicated blog listing page
+    url = "/posts/"
+    weight = 25
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/" # Link to an about page (create content/about.md)
+    weight = 30
+  # Contact can be part of footer or a dedicated page
+  # [[menu.main]]
+  #   identifier = "contact"
+  #   name = "Contact"
+  #   url = "/contact/"
+  #   weight = 40
+
+  [[menu.footer]]
+    name = "Privacy Policy"
+    url = "/privacy/" # Create content/privacy.md
+    weight = 10
+  [[menu.footer]]
+    name = "Terms of Service"
+    url = "/terms/" # Create content/terms.md
+    weight = 20
+
+# For Tailwind Typography plugin CDN (if you don't build Tailwind locally)
+# You might need to add this if your .Content styling looks off
+# [markup.goldmark.renderer]
+#   unsafe = true # Needed for some raw HTML in markdown, use with caution.
+# Consider styling markdown elements directly in your style.css if you avoid this.

@@ -1,0 +1,20 @@
+<article class="bg-card p-7 rounded-lg shadow-md-subtle border border-color-light">
+    {{ with .Params.image }}
+    <a href="{{ $.Permalink }}">
+        <img src="{{ . | relURL }}" alt="{{ $.Title }}" class="w-full h-56 object-cover rounded-lg mb-5 shadow-sm">
+    </a>
+    {{ else }}
+     <a href="{{ $.Permalink }}">
+        <img src="https://placehold.co/800x300/d1d8db/2c3e50?text={{ $.Title | urlize }}" alt="{{ $.Title }}" class="w-full h-56 object-cover rounded-lg mb-5 shadow-sm">
+    </a>
+    {{ end }}
+    <h4 class="text-2xl font-normal mb-3 text-text-body"><a href="{{ .Permalink }}" class="hover:underline">{{ .Title }}</a></h4>
+    <p class="text-sm text-secondary-accent mb-3">
+        Published on <span class="font-medium">{{ .Date.Format "January 2, 2006" }}</span>
+        {{ with .Params.author }}by <span class="font-medium">{{ . }}</span>{{ end }}
+    </p>
+    <p class="leading-relaxed mb-4 font-light text-text-body">
+        {{ .Summary }}
+    </p>
+    <a href="{{ .Permalink }}" class="inline-block text-primary-accent hover:underline">Continue Reading &rarr;</a>
+</article>

@@ -1,0 +1,41 @@
+<aside class="lg:col-span-1 space-y-10">
+    <!-- About Section -->
+    {{ with .Site.Params.aboutWidget }}
+    <div id="about" class="bg-card p-7 rounded-lg shadow-md-subtle border border-color-light">
+        <h3 class="text-2xl font-normal mb-4 text-text-body">{{ .title | default "About" }}</h3>
+        {{ with .imageUrl }}
+        <img src="{{ . | relURL }}" alt="{{ $.Site.Params.aboutWidget.title | default "About Us" }} Image" class="w-full h-48 object-cover rounded-lg mb-5 shadow-sm">
+        {{ end }}
+        <p class="leading-relaxed mb-4 font-light text-text-body">
+            {{ .description | safeHTML }}
+        </p>
+        {{ with .button }}
+        <a href="{{ .url | relURL }}" class="inline-block bg-tertiary-accent text-primary-accent px-7 py-3 rounded-full hover:bg-hover-light transition duration-300 shadow-sm">{{ .text }}</a>
+        {{ end }}
+    </div>
+    {{ end }}
+
+    <!-- Categories Section -->
+    {{ if .Site.Taxonomies.categories }}
+    <div class="bg-card p-7 rounded-lg shadow-md-subtle border border-color-light">
+        <h3 class="text-2xl font-normal mb-4 text-text-body">Categories</h3>
+        <ul class="space-y-3">
+            {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+            <li><a href="{{ (print "/categories/" $name) | relLangURL }}" class="text-text-body hover:text-link-hover transition duration-300">{{ $name | humanize | title }} ({{ $taxonomy.Count }})</a></li>
+            {{ end }}
+        </ul>
+    </div>
+    {{ end }}
+
+    <!-- Newsletter Signup -->
+    {{ with .Site.Params.newsletterWidget }}
+    <div class="bg-card p-7 rounded-lg shadow-md-subtle border border-color-light">
+        <h3 class="text-2xl font-normal mb-4 text-text-body">{{ .title | default "Find Your Calm" }}</h3>
+        <p class="mb-4 leading-relaxed font-light text-text-body">{{ .description }}</p>
+        <form action="{{ .formActionURL }}" method="POST"> {{/* Update with your form endpoint */}}
+            <input type="email" name="{{ .emailFieldName | default "email" }}" placeholder="Your email address" class="w-full p-3 mb-4 rounded-md border border-color-light focus:outline-none focus:ring-1 focus:ring-primary-accent" required>
+            <button type="submit" class="w-full bg-primary-accent text-text-primary-accent px-7 py-3 rounded-full hover:bg-hover-light transition duration-300 shadow-sm">{{ .buttonText | default "Subscribe" }}</button>
+        </form>
+    </div>
+    {{ end }}
+</aside>

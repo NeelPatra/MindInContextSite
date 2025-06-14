@@ -1,0 +1,81 @@
+/* Custom styles for Inter font and CSS variables for themes */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Light Theme Colors (Default) */
+    --bg-body: #f8f8f8; /* Very light off-white */
+    --text-body: #2c3e50; /* Deep charcoal/almost black */
+    --bg-primary-accent: #a7c5c5; /* Soft blue-grey */
+    --text-primary-accent: #2c3e50; /* Deep charcoal */
+    --bg-secondary-accent: #d1d8db; /* Desaturated warm grey */
+    --text-secondary-accent: #d1d8db; /* Desaturated warm grey */
+    --bg-tertiary-accent: #e0f2f1; /* Very light pastel green */
+    --text-tertiary-accent: #e0f2f1; /* Very light pastel green */
+    --border-color-light: #b0c2c7; /* Lighter charcoal for borders */
+    --hover-bg-light: #b0c2c7; /* Subtle hover background */
+    --text-link-hover: #e0f2f1; /* Hover color for links in header/footer */
+    --card-bg: #ffffff; /* White card background */
+    --toggle-icon-color: #2c3e50; /* Dark for light theme */
+}
+
+/* Dark Theme Overrides */
+body.dark-theme {
+    --bg-body: #252f3e; /* Dark bluish-grey, like a night sky */
+    --text-body: #e0e0e0; /* Soft off-white */
+    --bg-primary-accent: #5b6366; /* Deeper, muted grey */
+    --text-primary-accent: #e0e0e0; /* Soft off-white */
+    --bg-secondary-accent: #3e4a5d; /* Darker blue-grey */
+    --text-secondary-accent: #a7d9d7; /* Slightly brighter pastel green for contrast */
+    --bg-tertiary-accent: #3e4a5d; /* Darker blue-grey */
+    --text-tertiary-accent: #e0e0e0; /* Soft off-white */
+    --border-color-light: #6a7a7f; /* Darker border */
+    --hover-bg-light: #50585c; /* Darker hover */
+    --text-link-hover: #a7d9d7; /* Brighter accent on dark */
+    --card-bg: #2f3a4b; /* Darker card background */
+    --toggle-icon-color: #f8f8f8; /* Light for dark theme */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-body);
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+/* Applying custom properties to Tailwind classes */
+.bg-primary-accent { background-color: var(--bg-primary-accent); }
+.text-primary-accent { color: var(--text-primary-accent); }
+.bg-secondary-accent { color: var(--text-secondary-accent); } /* Note: this was text-secondary-accent in original, ensure consistent usage if using bg-secondary-accent */
+.bg-tertiary-accent { background-color: var(--bg-tertiary-accent); }
+.text-tertiary-accent { color: var(--text-tertiary-accent); }
+.border-color-light { border-color: var(--border-color-light); }
+.hover\:bg-hover-light:hover { background-color: var(--hover-bg-light); }
+.text-link-hover:hover { color: var(--text-link-hover); }
+.bg-card { background-color: var(--card-bg); }
+
+.rounded-lg { border-radius: 0.5rem; }
+.shadow-md-subtle { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.02); }
+
+/* Smooth scroll for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Toggle Button Styles */
+#theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--toggle-icon-color);
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 9999px; /* Fully rounded */
+    outline: none; /* Remove default focus outline */
+}
+#theme-toggle:focus {
+    box-shadow: 0 0 0 3px rgba(167, 197, 197, 0.5); /* Focus ring using primary accent color */
+}

@@ -1,0 +1,48 @@
+{{ define "main" }}
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+    <!-- Blog Posts Section -->
+    <section class="lg:col-span-2 space-y-10">
+        <!-- Featured Post -->
+        {{ $featured := first 1 (where .Site.RegularPages.ByDate.Reverse "Params.featured" true) }}
+        {{ if $featured }}
+            {{ range $featured }}
+                {{ .Render "card-featured" }}
+            {{ end }}
+        {{ else }}
+            {{/* Fallback if no featured post, maybe show the latest post as featured */}}
+            {{ range first 1 .Site.RegularPages.ByDate.Reverse }}
+                 {{ .Render "card-featured" }}
+            {{ end }}
+        {{ end }}
+
+
+        <!-- Latest Posts Section -->
+        <div id="latest" class="space-y-8">
+            <h3 class="text-3xl font-normal text-text-body border-b border-color-light pb-3">Latest Stories</h3>
+            {{ $pages := where .Site.RegularPages.ByDate.Reverse "Type" "in" .Site.Params.mainSections }}
+            {{ $paginator := .Paginate (where $pages "Params.featured" "!=" true) }} {{/* Exclude featured from regular list if desired */}}
+
+            {{ range $paginator.Pages }}
+                {{ .Render "card" }}
+            {{ end }}
+            
+            {{/* Simple Pagination Example */}}
+            <div class="flex justify-between items-center mt-8">
+                {{ if $paginator.HasPrev }}
+                    <a href="{{ $paginator.Prev.URL }}" class="bg-primary-accent text-text-primary-accent px-5 py-2 rounded-full hover:bg-hover-light transition duration-300">&larr; Newer Posts</a>
+                {{ else }}
+                    <span>&nbsp;</span> {{/* Placeholder for alignment */}}
+                {{ end }}
+                {{ if $paginator.HasNext }}
+                    <a href="{{ $paginator.Next.URL }}" class="bg-primary-accent text-text-primary-accent px-5 py-2 rounded-full hover:bg-hover-light transition duration-300">Older Posts &rarr;</a>
+                {{ else }}
+                    <span>&nbsp;</span> {{/* Placeholder for alignment */}}
+                {{ end }}
+            </div>
+        </div>
+    </section>
+
+    <!-- Sidebar Section -->
+    {{ partial "sidebar.html" . }}
+</div>
+{{ end }}

@@ -1,0 +1,28 @@
+{{ define "main" }}
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+    <section class="lg:col-span-2 space-y-8">
+        <h1 class="text-3xl font-normal text-text-body border-b border-color-light pb-3">{{ .Title }}</h1>
+        {{ $paginator := .Paginator }}
+        {{ range $paginator.Pages }}
+            {{ .Render "card" }}
+        {{ end }}
+
+        {{/* Pagination from index.html can be partialized and used here too */}}
+        <div class="flex justify-between items-center mt-8">
+            {{ if $paginator.HasPrev }}
+                <a href="{{ $paginator.Prev.URL }}" class="bg-primary-accent text-text-primary-accent px-5 py-2 rounded-full hover:bg-hover-light transition duration-300">&larr; Newer Posts</a>
+            {{ else }}
+                <span>&nbsp;</span>
+            {{ end }}
+            {{ if $paginator.HasNext }}
+                <a href="{{ $paginator.Next.URL }}" class="bg-primary-accent text-text-primary-accent px-5 py-2 rounded-full hover:bg-hover-light transition duration-300">Older Posts &rarr;</a>
+            {{ else }}
+                <span>&nbsp;</span>
+            {{ end }}
+        </div>
+    </section>
+
+    <!-- Sidebar Section -->
+    {{ partial "sidebar.html" . }}
+</div>
+{{ end }}
