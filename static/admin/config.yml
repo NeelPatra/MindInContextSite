@@ -1,0 +1,22 @@
+backend:
+  name: git-gateway # Connects to your Git repo via Netlify Identity
+  branch: main      # The branch Decap CMS will commit to (must match your GitHub default)
+
+# Optional: Media and Public folder settings
+# IMPORTANT: These paths are relative to your Hugo project root, NOT the theme root
+media_folder: "static/images" # Where images are uploaded in your main repo's static folder
+public_folder: "/images"     # How images are referenced in generated HTML
+
+collections:
+  - name: "posts" # A label for your content type
+    label: "Posts"
+    folder: "content/posts" # Folder in your repo where posts are stored
+    create: true # Allow creating new posts
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # How post filenames are generated
+    fields: # Define the fields for your blog posts
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ", picker_utc: false, required: true}
+      - {label: "Draft", name: "draft", widget: "boolean", default: false}
+      - {label: "Author", name: "author", widget: "string", required: false} # Added author field
+      - {label: "Featured Image", name: "featured_image", widget: "image", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
